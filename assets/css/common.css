@@ -527,7 +527,7 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   color: #000;
-  font-family: "Lato", Lato, "Noto Sans JP", Noto Sans JP;
+  font-family: "Noto Sans JP", "Lato", Meiryo, sans-serif;
   font-weight: 400;
   /* アンチエイリアスを指定する */
   -webkit-font-smoothing: subpixel-antialiased;
@@ -699,6 +699,18 @@ categories: [layout]
   z-index: 999;
 }
 
+@media screen and (max-width: 767px) {
+  .l-header {
+    width: 100vw;
+  }
+}
+
+@media screen and (max-width: 399px) {
+  .l-header {
+    min-width: 340px;
+  }
+}
+
 /* #Footer
    -------------------------------------------------------------------------- */
 /*doc
@@ -743,6 +755,12 @@ categories: [layout]
           align-items: center;
 }
 
+@media screen and (max-width: 399px) {
+  .l-footer {
+    min-width: 340px;
+  }
+}
+
 /* #Main
    -------------------------------------------------------------------------- */
 /*doc
@@ -767,7 +785,7 @@ categories: [layout]
 .l-main {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding-top: 10rem;
+  padding-top: 5.2rem;
   width: 100vw;
   display: -ms-grid;
   display: grid;
@@ -775,8 +793,34 @@ categories: [layout]
       grid-template-columns: 77vw 1fr;
 }
 
+@media screen and (max-width: 767px) {
+  .l-main {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding-top: 8.2em;
+  }
+}
+
+@media screen and (max-width: 399px) {
+  .l-main {
+    min-width: 340px;
+    padding-top: 8.4em;
+  }
+}
+
 .l-main__left__hero {
   position: relative;
+}
+
+@media screen and (max-width: 767px) {
+  .l-main__left__hero {
+    position: inherit;
+  }
 }
 
 .l-main__left__hero__pic img {
@@ -788,16 +832,54 @@ categories: [layout]
      object-position: -5em 50%;
 }
 
+@media screen and (max-width: 399px) {
+  .l-main__left__hero__pic img {
+    -o-object-position: -20em 50%;
+       object-position: -20em 50%;
+  }
+}
+
 .l-main__left__hero__badge {
   position: absolute;
   top: 15%;
   left: 85%;
 }
 
+@media screen and (max-width: 767px) {
+  .l-main__left__hero__badge {
+    position: inherit;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding-top: 5rem;
+  }
+}
+
+@media screen and (max-width: 399px) {
+  .l-main__left__hero__badge {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
 .l-main__right {
   display: -ms-grid;
   display: grid;
   grid-auto-rows: 800px 1fr;
+}
+
+@media screen and (max-width: 767px) {
+  .l-main__right {
+    display: block;
+  }
 }
 
 /* #Content
@@ -2772,8 +2854,26 @@ categories: [project]
 
 .p-header {
   color: #fff;
-  background-color: #363636;
+  background-color: rgba(54, 54, 54, 0.7);
   padding: 0 5em;
+}
+
+.p-header .spView {
+  display: none;
+}
+
+@media screen and (max-width: 399px) {
+  .p-header .pcView {
+    display: none;
+  }
+  .p-header .spView {
+    display: block;
+    margin-left: -1em;
+  }
+}
+
+.p-header input {
+  display: none;
 }
 
 .p-header ul {
@@ -2785,6 +2885,151 @@ categories: [project]
 
 .p-header ul li {
   margin: 1rem;
+  font-size: 16px;
+}
+
+.p-header ul li a {
+  border: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  color: #fff;
+  text-decoration: none;
+}
+
+.p-header ul li a:hover {
+  color: coral;
+  -webkit-transition: 80ms;
+  transition: 80ms;
+}
+
+@media screen and (max-width: 767px) {
+  .p-header {
+    /*
+ * Just a quick hamburger
+ */
+    /* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+    /*
+ * But let's hide the middle one.
+ */
+    /*
+ * Ohyeah and the last one should go the other direction
+ */
+    /*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+    /*
+ * And let's slide it in from the left
+ */
+  }
+  .p-header input {
+    display: block;
+  }
+  .p-header #menuToggle {
+    display: block;
+    position: relative;
+    top: 5px;
+    left: 10px;
+    z-index: 1;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+     -ms-user-select: none;
+         user-select: none;
+  }
+  .p-header #menuToggle a {
+    text-decoration: none;
+    color: #232323;
+    -webkit-transition: color 0.3s ease;
+    transition: color 0.3s ease;
+  }
+  .p-header #menuToggle a:hover {
+    color: tomato;
+  }
+  .p-header #menuToggle input {
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+    cursor: pointer;
+    opacity: 0;
+    /* hide this */
+    z-index: 2;
+    /* and place it over the hamburger */
+    -webkit-touch-callout: none;
+  }
+  .p-header #menuToggle span {
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    position: relative;
+    background: #cdcdcd;
+    border-radius: 3px;
+    z-index: 1;
+    -webkit-transform-origin: 4px 0px;
+            transform-origin: 4px 0px;
+    -webkit-transition: background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease, -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+    transition: background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease, -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease, -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  }
+  .p-header #menuToggle span:first-child {
+    -webkit-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
+  }
+  .p-header #menuToggle span:nth-last-child(2) {
+    -webkit-transform-origin: 0% 100%;
+            transform-origin: 0% 100%;
+  }
+  .p-header #menuToggle input:checked ~ span {
+    opacity: 1;
+    -webkit-transform: rotate(45deg) translate(-2px, -1px);
+            transform: rotate(45deg) translate(-2px, -1px);
+    background: #232323;
+  }
+  .p-header #menuToggle input:checked ~ span:nth-last-child(3) {
+    opacity: 0;
+    -webkit-transform: rotate(0deg) scale(0.2, 0.2);
+            transform: rotate(0deg) scale(0.2, 0.2);
+  }
+  .p-header #menuToggle input:checked ~ span:nth-last-child(2) {
+    -webkit-transform: rotate(-45deg) translate(0, -1px);
+            transform: rotate(-45deg) translate(0, -1px);
+  }
+  .p-header #menu {
+    display: block;
+    position: absolute;
+    width: 300px;
+    margin: -100px 0 0 -50px;
+    padding: 50px;
+    padding-top: 125px;
+    background: #ededed;
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased;
+    /* to stop flickering of text in safari */
+    -webkit-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
+    -webkit-transform: translate(45%, 0);
+            transform: translate(45%, 0);
+    -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+    transition: -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  }
+  .p-header #menu li {
+    padding: 10px 0;
+    font-size: 22px;
+  }
+  .p-header #menuToggle input:checked ~ ul {
+    -webkit-transform: translate(-35%, 0%);
+            transform: translate(-35%, 0%);
+  }
 }
 
 .p-footer {
@@ -2811,11 +3056,12 @@ categories: [project]
 }
 
 .p-footer ul li:nth-child(1) {
-  padding-right: 1.8rem;
+  padding-left: 3em;
 }
 
-.p-footer ul li:nth-child(3) {
-  padding: 0rem;
+.p-footer ul li:nth-child(2) {
+  padding-right: 2.9em;
+  padding-left: 4.6em;
 }
 
 /* -----------------------------------------------------------------------------
@@ -2836,17 +3082,73 @@ categories: [project]
 /**
  * ブログページのスタイルです。
  */
+.s-blog {
+  position: relative;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+}
+
+.s-blog::before {
+  content: url('data:image/svg+xml;utf-8,<svg width="7" height="1899" viewBox="0 0 7 1899" fill="none" xmlns="http://www.w3.org/2000/svg">\a   <g style="mix-blend-mode:difference">\a   <path d="M3.50024 0.999878L3.50024 1898" stroke="black"/>\a   </g>\a   </svg>\a     ');
+  position: absolute;
+  top: 5%;
+  left: -5%;
+}
+
 .s-blog ul li {
   list-style: none;
   padding: 2.5em;
 }
 
+.s-blog ul li iframe {
+  background: none;
+}
+
 .s-about {
-  padding: 5rem;
+  margin: 10em;
+  padding: 3em;
+  font-size: 1.2rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: relative;
+}
+
+@media screen and (max-width: 767px) {
+  .s-about {
+    font-size: 1.8em;
+    margin: 5em 3em;
+  }
+}
+
+@media screen and (max-width: 399px) {
+  .s-about {
+    margin: 5em 0.5em;
+  }
+}
+
+.s-about::before {
+  content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">\a         <line x1="25.5" x2="25.5" y2="92" stroke="black"/>\a         <path d="M0 27L159 27" stroke="black"/>\a         </svg>\a         ');
+  position: absolute;
+  top: -30%;
+}
+
+.s-about::after {
+  content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">\a             <line x1="133.5" y1="92" x2="133.5" stroke="black"/>\a             <path d="M159 65H0" stroke="black"/>\a             </svg>\a             ');
+  position: absolute;
+  right: 7%;
+  bottom: -30%;
 }
 
 .s-about p {
-  padding: 1em;
+  padding: 2em;
+}
+
+@media screen and (max-width: 399px) {
+  .s-about p {
+    padding: 0.5em;
+  }
 }
 
 .s-garelly {
@@ -2855,8 +3157,9 @@ categories: [project]
 }
 
 .s-garelly h2 {
-  width: 75%;
+  width: 72%;
   padding: 5rem;
+  margin-right: 10rem;
   text-align: end;
 }
 
@@ -2867,6 +3170,16 @@ categories: [project]
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 75%;
+  padding-bottom: 5rem;
+  padding-left: 5rem;
+  padding-right: 1rem;
+}
+
+@media screen and (max-width: 767px) {
+  .s-garelly > div {
+    width: 100%;
+    padding-right: 5rem;
+  }
 }
 
 .s-garelly > div picture {
@@ -2878,6 +3191,14 @@ categories: [project]
   margin: 1.2em;
 }
 
+@media screen and (max-width: 767px) {
+  .s-garelly > div picture {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
 .s-garelly > div picture img {
   max-width: 100%;
   -o-object-fit: cover;
@@ -2885,11 +3206,70 @@ categories: [project]
 }
 
 .s-contact {
-  padding: 5rem;
+  margin: 10em;
+  padding: 3em;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: relative;
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 767px) {
+  .s-contact {
+    font-size: 1.8em;
+    margin: 10em 3em;
+  }
+}
+
+@media screen and (max-width: 399px) {
+  .s-contact {
+    margin: 10em 1em;
+  }
+}
+
+.s-contact::before {
+  content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">\a                 <line x1="25.5" x2="25.5" y2="92" stroke="black"/>\a                 <path d="M0 27L159 27" stroke="black"/>\a                 </svg>\a                 ');
+  position: absolute;
+  top: -20%;
+}
+
+@media screen and (max-width: 1199px) {
+  .s-contact::before {
+    top: -15%;
+  }
+}
+
+.s-contact::after {
+  content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">\a                     <line x1="133.5" y1="92" x2="133.5" stroke="black"/>\a                     <path d="M159 65H0" stroke="black"/>\a                     </svg>\a                     ');
+  position: absolute;
+  right: 7%;
+  bottom: -20%;
+}
+
+@media screen and (max-width: 1199px) {
+  .s-contact::after {
+    bottom: -15%;
+  }
 }
 
 .s-contact dl {
-  padding: 1em;
+  padding: 2em;
+}
+
+@media screen and (max-width: 399px) {
+  .s-contact dl {
+    padding: 0.5em;
+  }
+}
+
+.s-contact dl dt {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.s-contact dl dd ul {
+  margin-top: 1em;
 }
 
 /* -----------------------------------------------------------------------------
@@ -3990,5 +4370,12 @@ categories: [utility]
   overflow: hidden !important;
   padding: 0 !important;
   clip: rect(0, 0, 0, 0) !important;
+}
+
+.u-zoom:hover {
+  -webkit-transform: scale(1.5, 1.5);
+          transform: scale(1.5, 1.5);
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 /*# sourceMappingURL=common.css.map */
