@@ -1,0 +1,92 @@
+ /* #Main
+   -------------------------------------------------------------------------- */
+ /*doc
+---
+title: main
+name: main
+categories: [layout]
+---
+
+`<main>`タグのスタイルです。ドキュメントのメインコンテンツを示し、ドキュメント内で1つしか記述できません。
+<article>タグや<nav>タグなどの中に入れることはできません。
+
+取り扱いの難しいタグなので、使わないという選択をするのもいいでしょう。
+
+```block
+<body>
+  <main id="l-main">
+  </main>
+</body>
+```
+*/
+ .l-main {
+   box-sizing: border-box;
+   padding-top: 5.2rem;
+   width: 100vw;
+
+   display: grid;
+   grid-template-columns: 77vw 1fr;
+
+   @include _mq-down(md) {
+     display: flex;
+     flex-direction: column;
+     padding-top: 8.2em;
+   }
+
+   @include _mq-down(sm) {
+     min-width: 340px;
+     padding-top: 8.4em;
+   }
+
+   &__left {
+
+     &__hero {
+       position: relative;
+
+       @include _mq-down(md) {
+         position: inherit;
+       }
+
+       &__pic {
+         img {
+           height: 800px;
+           width: 100%;
+           object-fit: cover;
+           object-position: -5em 50%;
+           
+           @include _mq-down(sm) {
+             object-position: -20em 50%;
+           }
+         }
+       }
+
+       &__badge {
+         position: absolute;
+         top: 15%;
+         left: 85%;
+
+         @include _mq-down(md) {
+           position: inherit;
+           display: flex;
+           justify-content: center;
+           padding-top: 5rem;
+         }
+
+         @include _mq-down(sm) {
+           flex-direction: column;
+           align-items: center;
+         }
+       }
+     }
+   }
+
+   &__right {
+     display: grid;
+     grid-auto-rows: 800px 1fr;
+
+     @include _mq-down(md) {
+       display: block;
+
+     }
+   }
+ }
