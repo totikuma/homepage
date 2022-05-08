@@ -24,9 +24,6 @@ categories: [layout]
    padding-top: 5.2rem;
    width: 100vw;
 
-   display: grid;
-   grid-template-columns: 77vw 1fr;
-
    @include _mq-down(md) {
      display: flex;
      flex-direction: column;

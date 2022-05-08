@@ -788,10 +788,6 @@ categories: [layout]
           box-sizing: border-box;
   padding-top: 5.2rem;
   width: 100vw;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 77vw 1fr;
-      grid-template-columns: 77vw 1fr;
 }
 
 @media screen and (max-width: 767px) {
@@ -3158,7 +3154,7 @@ categories: [project]
 }
 
 .s-garelly h2 {
-  width: 72%;
+  width: 100%;
   padding: 5rem;
   margin-right: 10rem;
   text-align: end;
